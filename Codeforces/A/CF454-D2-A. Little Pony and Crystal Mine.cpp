@@ -14,15 +14,22 @@ const double PI = 2.0 * acos(0.0);
 
 
 
-int main() {
-	int n, k;
-	cin >> n >> k;
-	vi v(n);
-	fill_rev(v, n);
-	int number;
-	if(v[n-k]==0)
-		number = v.end()-upper_bound(v.begin(), v.end(), 0);
-	else
-		number = v.end() - upper_bound(v.begin(), v.end(),v[n-k]-1);
-	cout << number;
+int main()
+{
+	int n;
+	cin >> n;
+	int Ds = 1;
+	lp(i, n/2+1) {
+		string stars((n - Ds) / 2, '*');
+		string D(Ds, 'D');
+		cout << stars << D << stars<<"\n";
+		Ds += 2;
+	}
+	Ds = n;
+	lp(i, n / 2 ) {
+		Ds -= 2;
+		string stars((n - Ds) / 2, '*');
+		string D(Ds, 'D');
+		cout << stars << D << stars << "\n";
+	}
 }

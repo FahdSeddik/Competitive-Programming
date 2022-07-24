@@ -15,14 +15,14 @@ const double PI = 2.0 * acos(0.0);
 
 
 int main() {
-	int n, k;
-	cin >> n >> k;
-	vi v(n);
-	fill_rev(v, n);
-	int number;
-	if(v[n-k]==0)
-		number = v.end()-upper_bound(v.begin(), v.end(), 0);
+	int sum = 0,x1,x2,x3;
+	cin >> x1 >> x2 >> x3;
+	int middle;
+	if ((x1 <= x2 && x1 >= x3) || (x1 >= x2 && x1 <= x3))
+		middle = x1;
+	else if ((x2 <= x1 && x2 >= x3) || (x2 >= x1 && x2 <= x3))
+		middle = x2;
 	else
-		number = v.end() - upper_bound(v.begin(), v.end(),v[n-k]-1);
-	cout << number;
+		middle = x3;
+	cout << abs(x1 - middle) + abs(x2 - middle) + abs(x3 - middle);
 }

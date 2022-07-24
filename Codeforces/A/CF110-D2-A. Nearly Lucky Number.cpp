@@ -14,15 +14,21 @@ const double PI = 2.0 * acos(0.0);
 
 
 
-int main() {
-	int n, k;
-	cin >> n >> k;
-	vi v(n);
-	fill_rev(v, n);
-	int number;
-	if(v[n-k]==0)
-		number = v.end()-upper_bound(v.begin(), v.end(), 0);
-	else
-		number = v.end() - upper_bound(v.begin(), v.end(),v[n-k]-1);
-	cout << number;
+int main()
+{
+	bool ans = true;
+	char c;
+	ll luckynum = 0,notlucky=0;
+	while (cin >> c) {
+		c -= 48;
+		if (c == 4 || c == 7)
+			luckynum++;
+	}
+	string s = to_string(luckynum);
+	lp(i, s.size()) {
+		if (s[i] != '7' && s[i] != '4')
+			ans = false;
+	}
+	ANS(ans);
+
 }

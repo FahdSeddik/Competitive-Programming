@@ -14,15 +14,25 @@ const double PI = 2.0 * acos(0.0);
 
 
 
-int main() {
-	int n, k;
-	cin >> n >> k;
-	vi v(n);
-	fill_rev(v, n);
-	int number;
-	if(v[n-k]==0)
-		number = v.end()-upper_bound(v.begin(), v.end(), 0);
-	else
-		number = v.end() - upper_bound(v.begin(), v.end(),v[n-k]-1);
-	cout << number;
+int main()
+{
+	int n;
+	cin >> n;
+	vector<string> bus(n);
+	bool found = false;
+	lp(i, n) {
+		cin >> bus[i];
+		if (found)continue;
+		if (bus[i][0] == 'O' && bus[i][1] == 'O') {
+			bus[i][0] = '+', bus[i][1] = '+';
+			found = true;
+		}
+		else if (bus[i][3] == 'O' && bus[i][4] == 'O') {
+			bus[i][3] = '+', bus[i][4] = '+';
+			found = true;
+		}
+	}
+	ANS(found)<<endl;
+	if (found)
+		lp(i, n)cout << bus[i] << endl;
 }

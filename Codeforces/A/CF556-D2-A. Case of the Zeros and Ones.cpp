@@ -15,14 +15,17 @@ const double PI = 2.0 * acos(0.0);
 
 
 int main() {
-	int n, k;
-	cin >> n >> k;
-	vi v(n);
-	fill_rev(v, n);
-	int number;
-	if(v[n-k]==0)
-		number = v.end()-upper_bound(v.begin(), v.end(), 0);
-	else
-		number = v.end() - upper_bound(v.begin(), v.end(),v[n-k]-1);
-	cout << number;
+	int n;
+	cin >> n;
+	char c;
+	int c1 = 0, c0 = 0;
+	lp(i, n) {
+		cin >> c;
+		c -= 48;
+		if (!c)
+			c0++;
+		else c1++;
+	}
+	int min = c0 > c1 ? c1 : c0;
+	cout << (n)-2 * min;
 }

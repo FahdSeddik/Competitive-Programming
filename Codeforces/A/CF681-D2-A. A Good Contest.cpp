@@ -6,6 +6,7 @@ using namespace std;
 #define fill_rev(vec,n) for(int i=n-1;i>=0;i--) cin>>vec[i]
 #define lp(i,n) for(int i=0;i<n;i++)
 #define pr(i,j) cout<<i<<" "<<j
+#define pr3(i,j,k) pr(i,j)<<" "<<k
 typedef long long ll;
 const double PI = 2.0 * acos(0.0);
 // digits start 48 ascii
@@ -14,15 +15,15 @@ const double PI = 2.0 * acos(0.0);
 
 
 
-int main() {
-	int n, k;
-	cin >> n >> k;
-	vi v(n);
-	fill_rev(v, n);
-	int number;
-	if(v[n-k]==0)
-		number = v.end()-upper_bound(v.begin(), v.end(), 0);
-	else
-		number = v.end() - upper_bound(v.begin(), v.end(),v[n-k]-1);
-	cout << number;
+int main()
+{
+	int n;
+	cin >> n;
+	string s;
+	int before, after, count = 0;
+	lp(i, n) {
+		cin >> s >> before >> after;
+		if (before >= 2400 && before < after)count++;
+	}
+	ANS(count >= 1);
 }

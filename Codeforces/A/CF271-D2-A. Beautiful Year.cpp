@@ -6,23 +6,22 @@ using namespace std;
 #define fill_rev(vec,n) for(int i=n-1;i>=0;i--) cin>>vec[i]
 #define lp(i,n) for(int i=0;i<n;i++)
 #define pr(i,j) cout<<i<<" "<<j
+#define pr3(i,j,k) pr(i,j)<<" "<<k
 typedef long long ll;
 const double PI = 2.0 * acos(0.0);
 // digits start 48 ascii
 // lowercase letters 97 ascii
 // uppercase 65
 
+bool isDistinct(string & s) {
+	return s[0] != s[1] && s[0] != s[2] && s[0] != s[3] && s[1] != s[2] && s[1] != s[3] && s[2] != s[3];
+}
 
-
-int main() {
-	int n, k;
-	cin >> n >> k;
-	vi v(n);
-	fill_rev(v, n);
-	int number;
-	if(v[n-k]==0)
-		number = v.end()-upper_bound(v.begin(), v.end(), 0);
-	else
-		number = v.end() - upper_bound(v.begin(), v.end(),v[n-k]-1);
-	cout << number;
+int main()
+{
+	int y;
+	cin >> y;
+	string v=to_string(++y);
+	while (!isDistinct(v))++y, v = to_string(y);
+	cout << v;
 }

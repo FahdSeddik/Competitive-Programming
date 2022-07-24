@@ -1,0 +1,40 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define vi vector<int>
+#define ANS(ans) cout << (ans? "YES":"NO")
+#define fill(vec,n) for(int i=0;i<n;i++) cin>>vec[i]
+#define fill_rev(vec,n) for(int i=n-1;i>=0;i--) cin>>vec[i]
+#define lp(i,n) for(int i=0;i<n;i++)
+#define pr(i,j) cout<<i<<" "<<j
+#define pr3(i,j,k) pr(i,j)<<" "<<k
+typedef long long ll;
+const double PI = 2.0 * acos(0.0);
+// digits start 48 ascii
+// lowercase letters 97 ascii
+// uppercase 65
+
+
+char s[120][120];
+
+int main()
+{
+    int n;
+    scanf("%d", &n);
+    lp(i,n) scanf("%s", s[i]);
+    int tot = 0;
+    ll ans = 0;
+    lp(i,n)
+    {
+        int tot = 0;
+        lp(j,n)
+            if (s[i][j] == 'C')
+                tot++;
+        ans += tot * (tot - 1) / 2;
+        tot = 0;
+        lp(j,n)
+            if (s[j][i] == 'C')
+                tot++;
+        ans += tot * (tot - 1) / 2;
+    }
+    cout << ans << endl;
+}
