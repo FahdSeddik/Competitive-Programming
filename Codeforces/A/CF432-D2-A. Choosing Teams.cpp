@@ -21,12 +21,15 @@ const double PI = 2.0 * acos(0.0);
 
 int main()
 {
-	vector<ll> d(3);
-	fill(d, 3);
-	ll loop = d[0] + d[1] + d[2];
-	ll rd = d[0] * 2 + d[1] * 2;
-	ll semileft = d[1] * 2 + d[2] * 2;
-	ll semiright = d[0] * 2 + d[2] * 2;
-	cout << min(min(rd, loop), min(semileft, semiright));
+	int n, k;
+	cin >> n >> k;
+	vi people(n);
+	fill(people, n);
+	int cnt = 0;
+	lp(i,0, n) {
+		if (5 - people[i] >= k)cnt++;
+	}
+	cout << cnt / 3;
+	
 }
 

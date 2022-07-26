@@ -21,12 +21,21 @@ const double PI = 2.0 * acos(0.0);
 
 int main()
 {
-	vector<ll> d(3);
-	fill(d, 3);
-	ll loop = d[0] + d[1] + d[2];
-	ll rd = d[0] * 2 + d[1] * 2;
-	ll semileft = d[1] * 2 + d[2] * 2;
-	ll semiright = d[0] * 2 + d[2] * 2;
-	cout << min(min(rd, loop), min(semileft, semiright));
+	string o1,o2,pile;
+	cin >> o1>>o2>>pile;
+	vi alphabetreq(26),alphabetpile(26);
+	lp(i, 0, o1.size()) {
+		char c = o1[i] - 65;
+		alphabetreq[c]++;
+	}
+	lp(i, 0, o2.size()) {
+		char c = o2[i] - 65;
+		alphabetreq[c]++;
+	}
+	lp(i, 0, pile.size()) {
+		char c = pile[i] - 65;
+		alphabetpile[c]++;
+	}
+	ANS(alphabetpile == alphabetreq);
 }
 

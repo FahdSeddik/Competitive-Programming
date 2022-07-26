@@ -21,12 +21,19 @@ const double PI = 2.0 * acos(0.0);
 
 int main()
 {
-	vector<ll> d(3);
-	fill(d, 3);
-	ll loop = d[0] + d[1] + d[2];
-	ll rd = d[0] * 2 + d[1] * 2;
-	ll semileft = d[1] * 2 + d[2] * 2;
-	ll semiright = d[0] * 2 + d[2] * 2;
-	cout << min(min(rd, loop), min(semileft, semiright));
+	ll n;
+	int lo = 0, lc = 0, ro = 0, rc = 0;
+	cin >> n;
+	int t;
+	lp(i, 0, n) {
+		cin >> t;
+		if (t == 0)
+			lc++;
+		else lo++;
+		cin >> t;
+		if (t == 0) rc++;
+		else ro++;
+	}
+	cout<<min(lo, lc) + min(ro, rc);
 }
 

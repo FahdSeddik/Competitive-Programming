@@ -21,12 +21,35 @@ const double PI = 2.0 * acos(0.0);
 
 int main()
 {
-	vector<ll> d(3);
-	fill(d, 3);
-	ll loop = d[0] + d[1] + d[2];
-	ll rd = d[0] * 2 + d[1] * 2;
-	ll semileft = d[1] * 2 + d[2] * 2;
-	ll semiright = d[0] * 2 + d[2] * 2;
-	cout << min(min(rd, loop), min(semileft, semiright));
+	int r, c;
+	cin >> r >> c;
+	vector<string> cake(r);
+	fill(cake, r);
+	int eaten=0;
+	lp(i, 0, r) {
+		int f = cake[i].find('S');
+		if (f == -1) {
+			lp(j, 0, c) {
+				if (cake[i][j] == '.') {
+					eaten++, cake[i][j] = '#';
+				}
+			}
+		}
+	}
+	lp(i, 0, c) {
+		bool any = false;
+		lp(j, 0, r) {
+			if (cake[j][i] == 'S') {
+				any = true;
+				break;
+			}
+		}
+		if (any)continue;
+
+		lp(j, 0, r) {
+			if (cake[j][i] == '.')eaten++, cake[j][i] = '#';
+		}
+	}
+	cout << eaten;
 }
 

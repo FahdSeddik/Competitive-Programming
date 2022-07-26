@@ -21,12 +21,16 @@ const double PI = 2.0 * acos(0.0);
 
 int main()
 {
-	vector<ll> d(3);
-	fill(d, 3);
-	ll loop = d[0] + d[1] + d[2];
-	ll rd = d[0] * 2 + d[1] * 2;
-	ll semileft = d[1] * 2 + d[2] * 2;
-	ll semiright = d[0] * 2 + d[2] * 2;
-	cout << min(min(rd, loop), min(semileft, semiright));
+	string n;
+	cin >> n;
+	for(int i=n.size()-1;i>=0;i--) {
+		char c = n[i] - 48;
+		if (c >= 5)cout << "-O|",c-=5;
+		else cout << "O-|";
+		lp(i, 0, c)cout << 'O';
+		cout << '-';
+		lp(i, 0, 4 - c)cout << 'O';
+		cout << "\n";
+	}
 }
 

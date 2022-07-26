@@ -21,12 +21,26 @@ const double PI = 2.0 * acos(0.0);
 
 int main()
 {
-	vector<ll> d(3);
-	fill(d, 3);
-	ll loop = d[0] + d[1] + d[2];
-	ll rd = d[0] * 2 + d[1] * 2;
-	ll semileft = d[1] * 2 + d[2] * 2;
-	ll semiright = d[0] * 2 + d[2] * 2;
-	cout << min(min(rd, loop), min(semileft, semiright));
+	int grid[3][3]= { {0,0,0} ,{0,0,0},{0,0,0} };
+	lp(i, 0, 3)
+		lp(j, 0, 3)cin >> grid[i][j];
+	bool result[3][3] = { {true,true,true} ,{true,true,true} ,{true,true,true} };
+	lp(i, 0, 3) {
+		lp(j, 0, 3) {
+			if (grid[i][j] % 2 == 0)continue;
+			result[i][j] = !result[i][j];
+			if (i - 1 >= 0)result[i - 1][j] = !result[i - 1][j];
+			if (i + 1 <= 2)result[i + 1][j] = !result[i + 1][j];
+			if (j - 1 >= 0)result[i][j - 1] = !result[i][j - 1];
+			if (j + 1 <= 2)result[i][j + 1] = !result[i][j + 1];
+		}
+	}
+	lp(i, 0, 3) {
+		lp(j, 0, 3) {
+			cout << result[i][j];
+		}
+		cout << "\n";
+	}
+	
 }
 

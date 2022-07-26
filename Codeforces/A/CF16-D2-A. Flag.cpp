@@ -21,12 +21,29 @@ const double PI = 2.0 * acos(0.0);
 
 int main()
 {
-	vector<ll> d(3);
-	fill(d, 3);
-	ll loop = d[0] + d[1] + d[2];
-	ll rd = d[0] * 2 + d[1] * 2;
-	ll semileft = d[1] * 2 + d[2] * 2;
-	ll semiright = d[0] * 2 + d[2] * 2;
-	cout << min(min(rd, loop), min(semileft, semiright));
+	int n, m;
+	cin >> n >> m;
+	vector<string> flag(n);
+	fill(flag, n);
+	bool ans = true;
+	lp(i, 0, n) {
+		char c = flag[i][0];
+		lp(j, 0, m) {
+			if (flag[i][j] != c) {
+				ans = false;
+				break;
+			}
+		}
+		if (!ans)break;
+	}
+	if(ans){
+		lp(i, 0, n - 1) {
+			if (flag[i] == flag[i + 1]) {
+				ans = false;
+				break;
+			}
+		}
+	}
+	ANS(ans);
 }
 
