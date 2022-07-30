@@ -25,23 +25,13 @@ const double PI = 2.0 * acos(0.0);
 
 int main()
 {
-	string n;
-	cin >> n;
-	if (n[0] != '-') {
-		cout << n;
-		return 0;
-	}
-	char last = n[n.size() - 1];
-	char before = n[n.size() - 2];
-	last -= 48, before -= 48;
-	if(last<before) {
-		n[n.size() - 2] = (char)(last+=48);
-	}
-	n[n.size() - 1] = ' ';
-	if (n == "-0 ") {
-		n = "0";
-	}
-	cout << n;
-	
+	int n, m;
+	cin >> n >> m;
+	vector<vi> table(n, vi(m));
+	lp(i, 0, n)lp(j, 0, m)cin >> table[i][j];
+	int cnt=4;
+	lp(i, 0, m)if (table[0][i] == 1 || table[n - 1][i] == 1)cnt = 2;
+	lp(i, 0, n)if (table[i][0] == 1 || table[i][m - 1] == 1)cnt = 2;
+	cout << cnt;
 }
 

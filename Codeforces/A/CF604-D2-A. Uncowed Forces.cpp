@@ -25,23 +25,17 @@ const double PI = 2.0 * acos(0.0);
 
 int main()
 {
-	string n;
-	cin >> n;
-	if (n[0] != '-') {
-		cout << n;
-		return 0;
+	int tot[]= { 500,1000,1500,2000,2500 };
+	vi m(5), w(5);
+	int hs, hu;
+	fill(m, 5);
+	fill(w, 5);
+	cin >> hs >> hu;
+	ll score = 0;
+	lp(i, 0, 5) {
+		score += max(tot[i] * 3 / 10, (int)(((float)((1.0 - (float)m[i] / 250.0) * (float)tot[i]) - 50.0 * (float)w[i])));
 	}
-	char last = n[n.size() - 1];
-	char before = n[n.size() - 2];
-	last -= 48, before -= 48;
-	if(last<before) {
-		n[n.size() - 2] = (char)(last+=48);
-	}
-	n[n.size() - 1] = ' ';
-	if (n == "-0 ") {
-		n = "0";
-	}
-	cout << n;
-	
+	score += ((ll)hs * 100 - (ll)hu * 50);
+	cout << score;
 }
 

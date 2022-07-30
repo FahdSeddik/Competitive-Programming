@@ -25,23 +25,28 @@ const double PI = 2.0 * acos(0.0);
 
 int main()
 {
-	string n;
+	int n;
 	cin >> n;
-	if (n[0] != '-') {
-		cout << n;
-		return 0;
+	char c;
+	int f = 0, s = 0;
+	bool ans = true;
+	lp(i, 0, n/2) {
+		cin >> c;
+		if (c != '4' && c != '7')ans = false;
+		else {
+			c -= 48;
+			f += c;
+		}
 	}
-	char last = n[n.size() - 1];
-	char before = n[n.size() - 2];
-	last -= 48, before -= 48;
-	if(last<before) {
-		n[n.size() - 2] = (char)(last+=48);
+	lp(i, 0, n / 2) {
+		cin >> c;
+		if (c != '4' && c != '7')ans = false;
+		else {
+			c -= 48;
+			s += c;
+		}
 	}
-	n[n.size() - 1] = ' ';
-	if (n == "-0 ") {
-		n = "0";
-	}
-	cout << n;
-	
+	if (f != s)ans = false;
+	ANS(ans);
 }
 

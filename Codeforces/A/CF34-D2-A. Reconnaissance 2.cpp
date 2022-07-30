@@ -25,23 +25,18 @@ const double PI = 2.0 * acos(0.0);
 
 int main()
 {
-	string n;
+	int n;
 	cin >> n;
-	if (n[0] != '-') {
-		cout << n;
-		return 0;
+	vi a(n);
+	fill(a, n);
+	int min = abs(a[0] - a[n-1]);
+	int mi1 = 1, mi2 = n;
+	lp(i, 0, n - 1) {
+		if (abs(a[i] - a[i + 1]) < min) {
+			min=abs(a[i] - a[i + 1]);
+			mi1 = i + 1, mi2 = i + 2;
+		}
 	}
-	char last = n[n.size() - 1];
-	char before = n[n.size() - 2];
-	last -= 48, before -= 48;
-	if(last<before) {
-		n[n.size() - 2] = (char)(last+=48);
-	}
-	n[n.size() - 1] = ' ';
-	if (n == "-0 ") {
-		n = "0";
-	}
-	cout << n;
-	
+	pr(mi1, mi2);
 }
 

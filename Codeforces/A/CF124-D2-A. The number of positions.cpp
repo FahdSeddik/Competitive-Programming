@@ -25,23 +25,15 @@ const double PI = 2.0 * acos(0.0);
 
 int main()
 {
-	string n;
-	cin >> n;
-	if (n[0] != '-') {
-		cout << n;
-		return 0;
+	int n, a, b;
+	read3(n, a, b);
+	//from back
+	// ..???b HIM ???a....
+	int cnt = 0;
+	lp(i, a+1, n+1) {
+		if (n-i<=b)cnt++;
 	}
-	char last = n[n.size() - 1];
-	char before = n[n.size() - 2];
-	last -= 48, before -= 48;
-	if(last<before) {
-		n[n.size() - 2] = (char)(last+=48);
-	}
-	n[n.size() - 1] = ' ';
-	if (n == "-0 ") {
-		n = "0";
-	}
-	cout << n;
+	cout << cnt;
 	
 }
 

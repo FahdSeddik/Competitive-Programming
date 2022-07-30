@@ -25,23 +25,20 @@ const double PI = 2.0 * acos(0.0);
 
 int main()
 {
-	string n;
-	cin >> n;
-	if (n[0] != '-') {
-		cout << n;
-		return 0;
+	int n, k;
+	cin >> n >> k;
+	string s;
+	cin >> s;
+	int t = s.find('T');
+	int g = s.find('G');
+	int min = t < g ? t : g;
+	bool ans = true;
+	int i=min;
+	for(i=min+k;i<n;i+=k) {
+		if (s[i] == 'T' || s[i]=='G')break;
+		if (s[i] == '#')ans = false;
 	}
-	char last = n[n.size() - 1];
-	char before = n[n.size() - 2];
-	last -= 48, before -= 48;
-	if(last<before) {
-		n[n.size() - 2] = (char)(last+=48);
-	}
-	n[n.size() - 1] = ' ';
-	if (n == "-0 ") {
-		n = "0";
-	}
-	cout << n;
-	
+	if (i != t && i!=g)ans = false;
+	ANS(ans);
 }
 
