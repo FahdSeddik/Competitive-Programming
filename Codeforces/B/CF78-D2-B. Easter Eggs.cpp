@@ -17,6 +17,7 @@ using namespace std;
 #define vasort(v) sort(all(v))
 #define vdsort(v) sort(allr(v))
 #define read4(a,b,c,d) cin>>a>>b>>c>>d
+#define sz(v) ((int)((v).size()))
 typedef long long ll;
 const double PI = acos(-1.0);
 // digits start 48 ascii
@@ -25,26 +26,19 @@ const double PI = acos(-1.0);
 
 
 
+
 int main()
 {
 	int n;
 	cin >> n;
-	vi h(n + 1);
-	lp(i, n)cin >> h[i + 1];
-	int energy = 0;
-	int money = 0;
-	lp(i, n) {
-		if (h[i] - h[i + 1] < 0) {
-			energy +=h[i]-h[i+1];
-			if (energy < h[i + 1]) {
-				energy = h[i + 1];
-				money = energy;
-			}
-		}
-		else {
-			energy += h[i] - h[i + 1];
-		}
+	string col = "ROYGBIV";
+	string c = "GBIV";
+	int times = n / 7;
+	int left = n-times*7;
+	lp(i, times)cout << col;
+	lp(i, left) {
+		cout << c[i%4];
 	}
-	cout << money;
+	
 }
 

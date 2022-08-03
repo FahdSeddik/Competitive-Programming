@@ -25,26 +25,29 @@ const double PI = acos(-1.0);
 
 
 
+
 int main()
 {
-	int n;
-	cin >> n;
-	vi h(n + 1);
-	lp(i, n)cin >> h[i + 1];
-	int energy = 0;
-	int money = 0;
-	lp(i, n) {
-		if (h[i] - h[i + 1] < 0) {
-			energy +=h[i]-h[i+1];
-			if (energy < h[i + 1]) {
-				energy = h[i + 1];
-				money = energy;
-			}
-		}
-		else {
-			energy += h[i] - h[i + 1];
+	map<char, int> mp;
+	mp.insert(pair<char, int>('A', 0));
+	mp.insert(pair<char, int>('B', 0));
+	mp.insert(pair<char, int>('C', 0));
+	string s;
+	lp(i, 3) {
+		cin >> s;
+		if (s[1] == '>')mp[s[0]]++;
+		else mp[s[2]]++;
+	}
+	if (mp['A'] == 1 && mp['B'] == 1 && mp['C'] == 1)cout << "Impossible";
+	else
+	{
+		lp(i, 3) {
+			if (mp['A'] == i)cout << 'A';
+			else if (mp['B'] == i)cout << 'B';
+			else if(mp['C']==i)cout << 'C';
 		}
 	}
-	cout << money;
+
+
 }
 

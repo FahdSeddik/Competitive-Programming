@@ -25,26 +25,22 @@ const double PI = acos(-1.0);
 
 
 
+
 int main()
 {
-	int n;
-	cin >> n;
-	vi h(n + 1);
-	lp(i, n)cin >> h[i + 1];
-	int energy = 0;
-	int money = 0;
-	lp(i, n) {
-		if (h[i] - h[i + 1] < 0) {
-			energy +=h[i]-h[i+1];
-			if (energy < h[i + 1]) {
-				energy = h[i + 1];
-				money = energy;
-			}
+	string s;
+	cin >> s;
+	int counter = 0;
+	int len = s.length();
+	while (len > 1) {
+		int sum = 0;
+		for (int i = 0; i < len; i++) {
+			sum += s[i] - '0';
 		}
-		else {
-			energy += h[i] - h[i + 1];
-		}
+		s = to_string(sum);
+		len = s.length();
+		++counter;
 	}
-	cout << money;
+	cout << counter;
 }
 

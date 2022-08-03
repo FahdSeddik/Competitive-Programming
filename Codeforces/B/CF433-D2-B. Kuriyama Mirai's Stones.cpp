@@ -17,34 +17,39 @@ using namespace std;
 #define vasort(v) sort(all(v))
 #define vdsort(v) sort(allr(v))
 #define read4(a,b,c,d) cin>>a>>b>>c>>d
+#define sz(v) ((int)((v).size()))
 typedef long long ll;
 const double PI = acos(-1.0);
+#pragma warning(disable:4996)
 // digits start 48 ascii
 // lowercase letters 97 ascii
 // uppercase 65
-
 
 
 int main()
 {
 	int n;
 	cin >> n;
-	vi h(n + 1);
-	lp(i, n)cin >> h[i + 1];
-	int energy = 0;
-	int money = 0;
-	lp(i, n) {
-		if (h[i] - h[i + 1] < 0) {
-			energy +=h[i]-h[i+1];
-			if (energy < h[i + 1]) {
-				energy = h[i + 1];
-				money = energy;
-			}
+	vector<ll> v(n);
+	fill(v, n);
+	int m;
+	cin >> m;
+	vector<ll> dup(n+1);
+	vector<ll> vac(n+1);
+	partial_sum(all(v), vac.begin()+1);
+	vasort(v);
+	partial_sum(all(v), dup.begin()+1);
+	vector<ll> ans;
+	lp(i, m) {
+		int type, l, r;
+		cin >> type >> l >> r;
+		if (type == 1) {
+			ans.push_back(vac[r] - vac[l -1]);
 		}
 		else {
-			energy += h[i] - h[i + 1];
+			ans.push_back(dup[r] - dup[l - 1]);
 		}
 	}
-	cout << money;
+	lp(i, m)cout << ans[i] << "\n";
 }
 
