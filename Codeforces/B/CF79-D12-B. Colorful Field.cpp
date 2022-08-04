@@ -27,32 +27,40 @@ int diry[] = { 1,0,0,-1 };
 // lowercase letters 97 ascii
 // uppercase 65
 
-int n, m;
-char c;
-bool valid(int x, int y) {
-	return x >= 0 && x < n&& y >= 0 && y < m;
-}
-
-
 int main()
 {
-	set<char> ans;
-	cin >> n >> m >> c;
-	vector<string> room(n);
-	fill(room, n);
-	lp(i, n) {
-		lp(j, m) {
-			if (room[i][j] == c) {
-				lp(k, 4) {
-					int tx = i + dirx[k];
-					int ty = j + diry[k];
-					if (valid(tx, ty) && room[tx][ty] != c && room[tx][ty] != '.') {
-						ans.insert(room[tx][ty]);
-					}
-				}
+	ll n, m, k, t,a,b;
+	read4(n, m, k, t);
+	vector<ll> x;
+	lp(i, k) {
+		cin >> a >> b;
+		a--, b--;
+		x.push_back(a * m + b);
+	}
+	vasort(x);
+	lp(i, t) {
+		cin >> a >> b;
+		a--, b--;
+		ll cur = a * m + b;
+		auto it = lower_bound(all(x), cur);
+		if (it != x.end() && *it == cur) {
+			cout << "Waste\n";
+			continue;
+		}
+		else {
+			ll num = cur - (it - x.begin());
+			num = num % 3;
+			if (!num) {
+				cout << "Carrots\n";
+				continue;
 			}
+			if (num == 1) {
+				cout << "Kiwis\n";
+				continue;
+			}
+			cout << "Grapes\n";
 		}
 	}
-	cout << ans.size();
-}
+	
 
+}

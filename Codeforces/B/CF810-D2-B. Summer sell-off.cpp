@@ -27,32 +27,31 @@ int diry[] = { 1,0,0,-1 };
 // lowercase letters 97 ascii
 // uppercase 65
 
-int n, m;
-char c;
-bool valid(int x, int y) {
-	return x >= 0 && x < n&& y >= 0 && y < m;
-}
-
 
 int main()
 {
-	set<char> ans;
-	cin >> n >> m >> c;
-	vector<string> room(n);
-	fill(room, n);
-	lp(i, n) {
-		lp(j, m) {
-			if (room[i][j] == c) {
-				lp(k, 4) {
-					int tx = i + dirx[k];
-					int ty = j + diry[k];
-					if (valid(tx, ty) && room[tx][ty] != c && room[tx][ty] != '.') {
-						ans.insert(room[tx][ty]);
-					}
-				}
-			}
-		}
+	int N, F;
+	cin >> N >> F;
+	vector<pair <ll, ll>> A(N);
+	for (int i = 0; i < N; i++)
+		cin >> A[i].first >> A[i].second;
+	vector<pair <ll, ll>> diff(N);
+	for (int i = 0; i < N; i++)
+	{
+		diff[i].first = min(A[i].second - A[i].first, A[i].first);
+		if (diff[i].first < 0)
+			diff[i].first = 0;
+		diff[i].second = i;
 	}
-	cout << ans.size();
+	sort(all(diff), greater<pair <ll,ll>>());
+	for (int i = 0; i < F; i++)
+		A[diff[i].second].first *= 2;
+	ll ans = 0;
+	for (int i = 0; i < N; i++)
+	{
+		ans += min(A[i].first, A[i].second);
+	}
+	cout << ans << endl;
+	return 0;
 }
 
